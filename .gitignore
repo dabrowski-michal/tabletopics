@@ -1,0 +1,50 @@
+# ---- Secrets (the site password lives here locally, and in Netlify env vars in production)
+.env
+.env.*
+!.env.example
+
+# ---- Dependencies
+node_modules/
+
+# ---- Netlify CLI state and local function/blob emulation
+.netlify/
+
+# ---- Local development "database" written by dev-server.mjs
+.local-data/
+
+# ---- Local data files that are not part of the app (member names, old question lists, agenda)
+Certificates.csv
+agenda.csv
+Questions.csv
+Questions2.csv
+
+# ---- Backups and archives
+*.zip
+*.bak
+*.orig
+
+# ---- Exported question sets (Admin Panel → Export JSON)
+table-topics-sets-*.json
+
+# ---- Editor / assistant settings
+.claude/
+.vscode/
+.idea/
+*.code-workspace
+
+# ---- Test artifacts
+playwright-report/
+test-results/
+__pycache__/
+*.pyc
+
+# ---- Logs
+*.log
+npm-debug.log*
+
+# ---- OS noise
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store

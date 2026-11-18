@@ -1,0 +1,17 @@
+{
+  "name": "table-topics-board",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Speaking Elephants Toastmasters - Table Topics board",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "start": "node dev-server.mjs",
+    "netlify:dev": "npx netlify-cli dev",
+    "deploy": "npx netlify-cli deploy --prod"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
