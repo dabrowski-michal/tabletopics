@@ -380,7 +380,6 @@ body::before {
 .drawer-switch:hover { background: rgba(255, 255, 255, 0.14); border-color: rgba(255, 255, 255, 0.18); }
 .drawer-switch .icon { color: var(--happy-yellow); }
 .drawer-switch-label { flex: 1 1 auto; }
-
 .switch-input {
     position: absolute;
     width: 1px;
@@ -1458,6 +1457,13 @@ body::before {
     height: clamp(280px, 44vh, 520px);
 }
 .list-panel.is-two-col .list-split { gap: clamp(24px, 3vw, 56px); }
+
+/* QR hidden (Settings switch): the list takes the stage — centred, never stretched thin */
+.list-panel.qr-hidden .qr-side { display: none; }
+.list-panel.qr-hidden .list-split { justify-content: center; }
+.list-panel.qr-hidden .list-side { flex: 0 1 min(100%, 1180px); }
+.list-panel.qr-hidden.is-two-col .list-side { flex-basis: min(100%, 1680px); }
+.list-panel.qr-hidden .list-title { text-align: center; }
 
 /* Recorded speech time — the leaderboard metric, signal-colored */
 .order-list .time-tag {

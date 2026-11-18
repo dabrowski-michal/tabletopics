@@ -1397,6 +1397,26 @@ function fitVotingNames() {
     });
 }
 
+/* Settings switch: show or hide the QR code on the voting screen (remembered on this device) */
+const QR_KEY = 'tableTopics.showQr';
+
+function applyQrVisibility(show) {
+    listModal.querySelector('.list-panel').classList.toggle('qr-hidden', !show);
+    if (listModal.classList.contains('show')) fitVotingNames();
+}
+
+function initQrToggle() {
+    const qrToggle = $('qrToggle');
+    let show = true;
+    try { show = localStorage.getItem(QR_KEY) !== '0'; } catch (e) { /* storage blocked — default to shown */ }
+    qrToggle.checked = show;
+    applyQrVisibility(show);
+    qrToggle.addEventListener('change', () => {
+        try { localStorage.setItem(QR_KEY, qrToggle.checked ? '1' : '0'); } catch (e) { /* not remembered */ }
+        applyQrVisibility(qrToggle.checked);
+    });
+}
+
 function revealSelectionOrder() {
     orderList.innerHTML = '';
     if (selectionHistory.length === 0) {
@@ -1773,6 +1793,7 @@ function init() {
     $('certificateBtn').addEventListener('click', openGeneratorModal);
     $('resetBtn').addEventListener('click', clearAndInitBoard);
     initAdminPanel();
+    initQrToggle();
     $('certCsvInput').addEventListener('change', e => handleCertCsvFile(e.target));
 
     $('nameCloseBtn').addEventListener('click', closeNameModal);
