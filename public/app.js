@@ -287,7 +287,9 @@ async function submitLogin() {
         appPassword = '';
         showAdminMsg(
             loginMsg,
-            err.status === 401 ? 'Wrong password. Try again.' : 'Cannot reach the server. Check the connection and try again.',
+            err.status === 401 ? 'Wrong password. Try again.'
+                : err.status === 503 ? 'The site password is not configured on the server (SITE_PASSWORD).'
+                : 'Cannot reach the server. Check the connection and try again.',
             'error'
         );
         loginPassword.select();
